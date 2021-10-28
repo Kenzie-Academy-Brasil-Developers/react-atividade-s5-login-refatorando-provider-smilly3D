@@ -21,14 +21,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const history = useHistory();
 
   const [authToken, setAuthToken] = useState(
-    () => localStorage.getItem("token") || ""
+    () => localStorage.getItem("@5a11:token") || ""
   );
 
   const signIn = (userData: userData) => {
     axios
       .post("https://kenziehub.herokuapp.com/sessions", userData)
       .then((response) => {
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("@5a11:token", response.data.token);
         setAuthToken(response.data.token);
 
         history.push("/dashboard");
